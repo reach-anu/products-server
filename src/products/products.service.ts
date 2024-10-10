@@ -21,7 +21,7 @@ export class ProductsService {
 
   async findAll(): Promise<Product[]> {
     this.logger.log('Fetching all products');
-    const products = await this.productModel.find();
+    const products = await this.productModel.find().sort({ createdAt: -1 });;
     this.logger.log(`Found ${products.length} products`);
     return products;
   }

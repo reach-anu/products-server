@@ -6,8 +6,9 @@ import { ValidationPipe } from '@nestjs/common';
 dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
-  await app.listen(3000);
+  await app.listen(5003);
 }
 bootstrap();

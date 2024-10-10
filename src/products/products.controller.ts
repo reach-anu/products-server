@@ -73,6 +73,7 @@ export class ProductsController {
 
   //edit product
   @Put(':id')
+  @UseGuards(AuthGuard('jwt'))
   async update(@Param('id') id: string, @Body() productData): Promise<Product> {
     try {
       this.logger.log(`product id: ${id}`);
@@ -92,6 +93,7 @@ export class ProductsController {
 
   //delete product
   @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
   async remove(@Param('id') id: string): Promise<Product> {
     try {
       this.logger.log(`Removing product with ID: ${id}`);
